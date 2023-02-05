@@ -1,0 +1,21 @@
+[package]
+name = "crazyradio2-py"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "crazyradio2"
+# "cdylib" is necessary to produce a shared library for Python to import from.
+#
+# Downstream Rust code (including code in `bin/`, `examples/`, and `tests/`) will not be able
+# to `use string_sum;` unless the "rlib" or "lib" crate type is also included, e.g.:
+# crate-type = ["cdylib", "rlib"]
+crate-type = ["cdylib"]
+
+
+[dependencies]
+anyhow = "1.0.68"
+crazyradio2 = { version = "0.1.0", path = "../crazyradio2" }
+pyo3 = { version = "0.18.0", features = ["serde", "extension-module", "anyhow", "abi3", "abi3-py38"] }
+serde = "1.0.152"
+serde_json = "1.0.91"
