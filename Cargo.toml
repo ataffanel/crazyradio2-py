@@ -15,7 +15,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 anyhow = "1.0.68"
-crazyradio2 = { version = "0.1.0", path = "../crazyradio2" }
+crazyradio2 = { version = "0.1.0", path = "../crazyradio2-rs" }
 pyo3 = { version = "0.18.0", features = ["serde", "extension-module", "anyhow", "abi3", "abi3-py38"] }
 serde = "1.0.152"
 serde_json = "1.0.91"
