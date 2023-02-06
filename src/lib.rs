@@ -88,7 +88,9 @@ impl Crazyradio2 {
 
     pub fn rpc_call_py(&self, py: Python<'_>, method: &str, params: &PyAny) -> anyhow::Result<PyObject> {
         let params = py_to_value(params).unwrap();
-        let res: Value = self.radio.rpc.call(method, params).unwrap();
+        let res: Value = py.allow_threads(||{
+            self.radio.rpc.call(method, params).unwrap()
+        });
         Ok(value_to_py(&res, py)?)
     }
 
